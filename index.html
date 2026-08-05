@@ -2,230 +2,350 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Meghana Lopinti | Business Analytics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Meghana Lopinti, Business Analytics graduate based in New Haven, CT." />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meghana Lopinti | Business Analytics Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Minimal, classy style -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #050816;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; width: 100%;
+      padding: 1rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(5, 8, 22, 0.9); backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .logo {
+      font-weight: 600; font-size: 1.3rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #38bdf8;
+    }
+    .navbar ul {
+      list-style: none; display: flex; gap: 1.5rem; font-size: 0.95rem;
+    }
+    .navbar a { color: #e5e7eb; transition: color 0.2s ease; }
+    .navbar a:hover { color: #38bdf8; }
+
+    /* Sections */
+    .section {
+      padding: 6rem 4rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-title { text-align: center; margin-bottom: 2.5rem; }
+    .section-title h2 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .section-title p { color: #9ca3af; font-size: 0.95rem; }
+
+    /* Hero */
+    .hero {
+      padding: 8rem 4rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-content {
+      display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .hero-text { flex: 1 1 320px; }
+    .hero-tagline {
+      font-size: 0.85rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #9ca3af; margin-bottom: 0.75rem;
+    }
+    .hero h1 { font-size: 2.4rem; margin-bottom: 0.4rem; font-weight: 600; }
+    .hero h1 span { color: #38bdf8; }
+    .hero h2 { font-size: 1.3rem; color: #d1d5db; margin-bottom: 1rem; font-weight: 400; }
+    .hero-description { color: #9ca3af; margin-bottom: 1.5rem; font-size: 0.98rem; }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.4rem;
+      border-radius: 999px; font-size: 0.9rem;
+      cursor: pointer; border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .btn-primary { background: #38bdf8; color: #020617; font-weight: 500; }
+    .btn-primary:hover { background: #0ea5e9; }
+    .btn-secondary {
+      background: transparent; color: #e5e7eb; border-color: #4b5563;
+    }
+    .btn-secondary:hover { border-color: #38bdf8; color: #38bdf8; }
+
+    .hero-image { flex: 1 1 260px; display: flex; justify-content: center; }
+    .hero-image img {
+      width: 260px; height: 260px; object-fit: cover;
+      border-radius: 24px; border: 1px solid #1f2937;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    /* About */
+    .about-content { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .about-text { flex: 2 1 360px; color: #d1d5db; font-size: 0.97rem; }
+    .about-text p { margin-bottom: 1rem; }
+    .about-highlight {
+      flex: 1 1 260px; background: #0b1120;
+      border-radius: 16px; padding: 1.5rem; border: 1px solid #1f2937;
+    }
+    .about-highlight h3 { margin-bottom: 1rem; font-size: 1.05rem; font-weight: 500; }
+    .about-highlight ul { list-style: none; font-size: 0.95rem; color: #9ca3af; }
+    .about-highlight li { margin-bottom: 0.6rem; }
+
+    /* Skills */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: #0b1120; border-radius: 16px;
+      padding: 1.5rem; border: 1px solid #1f2937;
+    }
+    .skill-card h3 { margin-bottom: 0.8rem; font-size: 1.05rem; font-weight: 500; }
+    .skill-card ul { list-style: none; color: #9ca3af; font-size: 0.95rem; }
+    .skill-card li { margin-bottom: 0.4rem; }
+
+    /* Projects */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .project-card {
+      background: #0b1120; border-radius: 16px;
+      overflow: hidden; border: 1px solid #1f2937;
+      display: flex; flex-direction: column;
+    }
+    .project-card img { width: 100%; height: 180px; object-fit: cover; }
+    .project-content { padding: 1.3rem; }
+    .project-content h3 { margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 500; }
+    .project-content p { margin-bottom: 0.6rem; color: #d1d5db; font-size: 0.95rem; }
+    .project-tags { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.8rem; }
+    .project-links a { font-size: 0.9rem; color: #38bdf8; }
+    .project-links a:hover { text-decoration: underline; }
+
+    /* Experience */
+    .timeline {
+      position: relative; margin-top: 1.5rem;
+      padding-left: 1.5rem; border-left: 2px solid #1f2937;
+    }
+    .timeline-item { margin-bottom: 1.8rem; position: relative; }
+    .timeline-dot {
+      width: 10px; height: 10px; border-radius: 999px;
+      background: #38bdf8; position: absolute; left: -6px; top: 4px;
+    }
+    .timeline-content h3 { font-size: 1.05rem; font-weight: 500; }
+    .timeline-content h4 { font-size: 0.9rem; color: #9ca3af; margin-bottom: 0.4rem; }
+    .timeline-content p { color: #d1d5db; font-size: 0.95rem; }
+
+    /* Education */
+    .education-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .education-card {
+      background: #0b1120; border-radius: 16px;
+      padding: 1.5rem; border: 1px solid #1f2937;
+    }
+    .education-card h3 { margin-bottom: 0.4rem; font-size: 1.05rem; font-weight: 500; }
+    .education-card h4 { margin-bottom: 0.4rem; color: #9ca3af; font-size: 0.95rem; }
+
+    /* Contact */
+    .contact-content { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .contact-info { flex: 1 1 260px; color: #d1d5db; font-size: 0.95rem; }
+    .contact-info a { color: #38bdf8; }
+    .contact-info a:hover { text-decoration: underline; }
+
+    .contact-form {
+      flex: 1 1 320px; background: #0b1120;
+      border-radius: 16px; padding: 1.5rem; border: 1px solid #1f2937;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-size: 0.9rem; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 0.6rem; border-radius: 8px;
+      border: 1px solid #1f2937; background: #020617;
+      color: #e5e7eb; font-size: 0.9rem;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: #38bdf8;
+    }
+
+    .footer {
+      text-align: center; padding: 2rem 1rem;
+      color: #6b7280; font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0.8rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .section { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="nav">
-    <div class="logo">ML</div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Meghana</div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Meghana Lopinti</h1>
-      <h2>Business Analytics & Business Administration</h2>
-      <p>
-        Business Analytics graduate with hands-on experience in data-driven operations,
-        project coordination, and marketing analytics. Skilled in translating complex data into
-        actionable business insights with visualization and dashboarding.
-      </p>
-      <p class="availability">
-        Available to start: <strong>July 2026</strong> • Based in <strong>New Haven, CT</strong>
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#projects" class="btn primary">View Projects</a>
-        <a href="#contact" class="btn secondary">Contact Me</a>
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-tagline">Business Analytics • Data Visualization • Insights & Strategy</p>
+        <h1>Hi, I'm <span>Meghana Lopinti</span></h1>
+        <h2>Fresher on paper, but built for real-world impact.</h2>
+        <p class="hero-description">
+          I’m a Business Analytics graduate who loves turning complex data into clear, confident decisions.
+          I combine analytical thinking with a calm, minimal design style—so dashboards, reports, and apps
+          feel professional, clean, and easy to use.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Let’s Connect</a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-image">
-      <img src="meghana.jpg.jpg" alt="Meghana Lopinti" />
+      <div class="hero-image">
+        <img src="assets/images/profile.jpg" alt="Meghana Lopinti" />
+      </div>
     </div>
   </section>
 
+  <!-- About -->
   <section id="about" class="section">
-    <h3>About</h3>
-    <p>
-      Business Analytics graduate student from the University of New Haven, combining
-      experience in data-driven operations, project coordination, and marketing analytics.
-      I enjoy building end-to-end analytical workflows—from raw data to executive-ready
-      dashboards—that support strategic decision-making.
-    </p>
-  </section>
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>A fresher with professional mindset, creativity, and ownership.</p>
+    </div>
 
-  <section id="education" class="section">
-    <h3>Education</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>Master of Business Analytics (STEM)</h4>
-        <p><strong>University of New Haven</strong> — West Haven, CT</p>
-        <p>Aug 2024 – May 2026 • GPA: 3.47 / 4.00</p>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I’m a <strong>Master of Business Analytics</strong> graduate with a strong interest in
+          data visualization, dashboarding, and data-driven decision-making. I enjoy taking messy,
+          unstructured information and turning it into clear, visual stories that help people act
+          with confidence.
+        </p>
+        <p>
+          Even as a fresher, I’ve had exposure to <strong>operations, reporting, and product-style work</strong>:
+          from supporting documentation and financial reporting in construction and tech environments,
+          to building a <strong>beauty services mobile app</strong> with a premium, modern interface.
+        </p>
+        <p>
+          My style is a mix of <strong>analytical depth</strong> and <strong>minimal, thoughtful design</strong>.
+          I don’t just create charts—I think about what decisions they should support, who will use them,
+          and how to make them feel simple instead of overwhelming.
+        </p>
+        <p>
+          I’m actively looking for opportunities as a <strong>Business Analyst</strong> or
+          <strong>Data Analyst</strong>, where I can contribute to real projects, learn fast,
+          and bring both structure and creativity to the team.
+        </p>
       </div>
 
-      <div class="card">
-        <h4>Bachelor of Information Technology</h4>
-        <p><strong>St. Joseph's Degree College</strong> — Hyderabad, India</p>
-        <p>Jun 2018 – Apr 2021 • GPA: 8.95 / 10.00</p>
+      <div class="about-highlight">
+        <h3>What makes me different as a fresher?</h3>
+        <ul>
+          <li><strong>Professional attitude:</strong> I treat projects like real products.</li>
+          <li><strong>Calm, clean design taste:</strong> I prefer clarity over clutter.</li>
+          <li><strong>End-to-end thinking:</strong> From requirements to dashboards to UX.</li>
+          <li><strong>Ownership:</strong> I like taking responsibility and seeing things through.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="experience" class="section">
-    <h3>Work Experience</h3>
-
-    <div class="timeline-item">
-      <h4>Admin Assistant Intern</h4>
-      <p><strong>Silicon Labs India Private Limited</strong> — Madhapur, Hyderabad</p>
-      <p>May 2023 – Dec 2023</p>
-      <ul>
-        <li>Coordinated administrative project workflows within a 4-member team.</li>
-        <li>Used Jira, Workday, ServiceNow to track milestones and manage facility upgrades.</li>
-        <li>Managed event logistics and stakeholder communications.</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <h4>Accountant Assistant</h4>
-      <p><strong>Keerthi Constructions Private Limited</strong> — Banjara Hills, Hyderabad</p>
-      <p>Apr 2021 – Mar 2023</p>
-      <ul>
-        <li>Improved reporting accuracy by 15% through structured requirement analysis.</li>
-        <li>Resolved reporting discrepancies with cross-functional teams.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <h3>Projects</h3>
-
-    <div class="card">
-      <h4>NJ Transit Passenger Demand Forecasting (Capstone)</h4>
-      <p><strong>Tools:</strong> Python, SQL, R, Power BI, Excel, GitHub</p>
-      <ul>
-        <img src="Project dashbord.jpeg" alt="Project Dashboard" />
-        <li>Consolidated 168+ weekly operational datasets into a structured master database.</li>
-        <li>Built an end-to-end data pipeline for cleaning, validation, and transformation.</li>
-        <li>Performed statistical forecasting in R for passenger volumes (2026–2030).</li>
-        <li>Developed interactive Power BI dashboards for scheduling and fleet allocation.</li>
-        <li>NJ Transit - Database & Analytics Project Summary
-        <li> From raw operational data to long-term forecasting, this project focused on analyzing passenger demand patterns relevant to NJ Transit's commuter ecosystem, 
-            particularly connections feeding major hubs like Port Authority Bus Terminal and rail corridors linking Newark and Hoboken.</li>
-<li>- Project Overview.</li>
-<li>This end-to-end database management and analytics initiative simulated a real-world transit authority demand-planning environment.
-Consolidated 168+ weekly datasets into a structured master database
-Designed an optimized data pipeline using Python, SQL, and
-Excel for cleaning, validation, and transformation Integrated external demand drivers such as weather conditions and U.S. federal holidays
-Conducted statistical modeling and forecasting in R Developed interactive Power BI dashboards to answer operational and strategic questions Forecasted passenger volumes 
-for 2026-2030 to support long-term capacity and scheduling decisions.</li>
-
-<li>- Key Analytical Insights.</li>
-<li>Identified post-pandemic volatility in passenger volumes
-* Detected seasonality driven by holidays and weather disruptions
-Analyzed structural shifts in commuter behavior affecting weekday demand
-* Highlighted capacity planning gaps during peak vs. off-peak cycles.</li>
-
-<li>Forecast models provided forward-looking projections to guide: Fleet allocation
-Staffing optimization
-Service frequency adiustments
-Budget planning.</li>
-
-Strategic Relevance to NJ Transit
-NJ Transit operates in a constrained environment-aging infrastructure, fluctuating ridership, and funding pressures. Data-driven forecasting directly supports:
-Demand-based scheduling optimization Cost containment without service degradation Long-term capital planning
-Operational resilience against external shocks
-Bottom Line
-This project mirrors the analytical backbone required in a large public transit authority like NJ Transit:
-Clean data architecture → Integrated demand modeling → Forecast-driven decision support → Executive-ready dashboards
-It demonstrates not just technical execution, but systems-level thinking-building scalable, decision-ready infrastructure rather than isolated reports.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h4>Employee Welfare Measures Analysis</h4>
-      <p><strong>Tools:</strong> SPSS</p>
-      <ul>
-        <li>Conducted welfare study with surveys for 100+ employees.</li>
-        <li>Analyzed satisfaction, attendance, and productivity using SPSS.</li>
-        <li>Delivered recommendations that improved employee engagement scores.</li>
-        <li>This project presents a comprehensive study on Employee Welfare Measures in the construction industry, 
-          focusing on evaluating how welfare initiatives influence employee satisfaction, motivation, productivity, and overall organizational performance. 
-          The research applies principles of Human Resources, Accounting, Information Technology, and Business Analytics to assess workplace welfare practices and provide practical, data-driven recommendations for organizational improvement. 
-          Using a structured research methodology, the study collected and analyzed survey responses from 100 employees through SPSS, Microsoft Excel, and statistical analysis techniques. 
-          Key areas of evaluation included statutory and non-statutory welfare benefits, workplace safety, compensation, employee engagement, and organizational well-being. 
-          The project also incorporated literature review, industry profiling, SWOT analysis, data interpretation, and evidence-based recommendations to enhance HR policies and employee welfare practices.
-          This research strengthened my expertise in HR analytics, business research, quantitative analysis, and strategic decision-making, while demonstrating my ability to integrate interdisciplinary concepts to solve real-world organizational challenges. 
-          It reflects strong analytical, problem-solving, and business reporting skills applicable to Human Resources, Business Analytics, Accounting, and Information Technology.</li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- Skills -->
   <section id="skills" class="section">
-    <h3>Skills</h3>
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>Analytics, business, and product skills that I bring to a team.</p>
+    </div>
+
     <div class="skills-grid">
-      <div>
-        <h4>Analytics & Soft Skills</h4>
-        <p>Business Analysis, Requirements Gathering, Statistical Modeling, Forecasting, Data Visualization, Communication, Problem-Solving, Team Management</p>
+      <div class="skill-card">
+        <h3>Analytics & Data</h3>
+        <ul>
+          <li>Power BI – Dashboards & Reports</li>
+          <li>SPSS – Statistical Analysis</li>
+          <li>SQL – Data Extraction & Queries</li>
+          <li>R & Python – Beginner-level analytics</li>
+          <li>Advanced Excel – Pivot tables, formulas, automation</li>
+        </ul>
       </div>
 
-      <div>
-        <h4>Technical</h4>
-        <p>Power BI, SPSS, SQL (Beginner), Python (Beginner), R (Beginner), Advanced Excel</p>
+      <div class="skill-card">
+        <h3>Business & Communication</h3>
+        <ul>
+          <li>Business Requirements Gathering</li>
+          <li>Process Understanding & Documentation</li>
+          <li>Reporting & Presentation</li>
+          <li>Structured, clear communication</li>
+        </ul>
       </div>
 
-      <div>
-        <h4>Business</h4>
-        <p>Project Coordination, Team Leadership, Production Support, Budget Analysis, Market Segmentation, Consumer Behavior</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="certificates" class="section">
-    <h3>Certificates</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>Claude 101</h4>
-        <p><strong>DataCamp</strong></p>
-        <p>Completed: Jun 16, 2026 • Length: 2 hours</p>
-        <p>Certificate ID: 48,395,962</p>
-      </div>
-
-      <div class="card">
-        <h4>Reporting with R Markdown</h4>
-        <p><strong>DataCamp</strong></p>
-        <p>Completed: Mar 25, 2025 • Length: 4 hours</p>
-        <p>Certificate ID: 39,788,106</p>
-      </div>
-
-      <div class="card">
-        <h4>MS Office with AI Workshop</h4>
-        <p><strong>Skill Nation</strong></p>
-        <p>Completed: Jan 29, 2026</p>
-        <p>Conducted by: Mr. Hardik Raja</p>
+      <div class="skill-card">
+        <h3>Tech & Product</h3>
+        <ul>
+          <li>React Native & Expo – Mobile apps</li>
+          <li>GitHub & GitHub Pages – Version control & hosting</li>
+          <li>HTML & CSS – Front-end basics</li>
+          <li>UI thinking & clean design preferences</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h3>Contact</h3>
-    <p>If you’d like to discuss opportunities or collaborations, feel free to reach out.</p>
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="section-title">
+      <h2>Projects</h2>
+      <p>Work that reflects my skills, creativity, and potential.</p>
+    </div>
 
-    <ul class="contact-list">
-      <li><strong>Phone:</strong> +1 (203) 675-6418</li>
-      <li><strong>Email:</strong> <a href="mailto:Meghanailopinti@gmail.com">Meghanailopinti@gmail.com</a></li>
-      <li><strong>Location:</strong> New Haven, CT</li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/lopinti-meghana" target="_blank">linkedin.com/in/lopinti-meghana</a></li>
-    </ul>
-  </section>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="assets/images/project1.jpg" alt="Beauty Services App" />
+        <div class="project-content">
+          <h3>Beauty Services Mobile App</h3>
+          <p>
+            A React Native + Expo app designed for beauty parlours to manage services, bookings,
+            and customer experience with a premium, modern UI and realistic service visuals.
+          </p>
+          <p class="project-tags">React Native • Expo • UI/UX • Product Thinking</p>
+          <div class="project-links">
+            <a href="https://github.com/LopintiMeghana" target="_blank">GitHub Repo</a>
+          </div>
+        </div>
+      </div>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> Meghana Lopinti. All rights reserved.</p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      <div class="project-card">
+        <img src="assets/images/project2.jpg" alt="Power BI Dashboard" />
+        <div class="project-content">
+          <h3>Business Performance Dashboards</h3>
+          <p>
+            Power BI dashboards built to track KPIs, trends, and performance metrics—focused on clarity,
+            usability, and helping stakeholders quickly understand what’s working and what needs attention.
